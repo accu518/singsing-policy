@@ -74,11 +74,11 @@
   </head>
   <body>
     <div class="lang-tabs">
-      <button class="active" onclick="show('ko')">한국어</button>
-      <button onclick="show('en')">English</button>
-      <button onclick="show('zh')">中文</button>
-      <button onclick="show('ja')">日本語</button>
-      <button onclick="show('hi')">हिन्दी</button>
+      <button class="active" onclick="show('ko', this)">한국어</button>
+      <button onclick="show('en', this)">English</button>
+      <button onclick="show('zh', this)">中文</button>
+      <button onclick="show('ja', this)">日本語</button>
+      <button onclick="show('hi', this)">हिन्दी</button>
     </div>
 
     <!-- ───────────────── 한국어 ───────────────── -->
@@ -153,8 +153,9 @@
       <h2>11. 방침 변경</h2>
       <p>개인정보처리방침이 변경될 경우 이 페이지를 통해 공지합니다.</p>
 
-      <h2>12. 운영자 및 문의</h2>
+      <h2>12. 운영자 및 개인정보 보호책임자</h2>
       <p>운영자: 싱싱 스케치북</p>
+      <p>개인정보 보호책임자: SingsingSketch 운영팀</p>
       <p>이메일: amtlhm518@gmail.com</p>
     </div>
 
@@ -244,8 +245,9 @@
       <h2>11. Changes to This Policy</h2>
       <p>Any changes to this privacy policy will be posted on this page.</p>
 
-      <h2>12. Operator and Contact</h2>
+      <h2>12. Operator and Data Protection Officer</h2>
       <p>Operator: SingsingSketch</p>
+      <p>Data Protection Officer: SingsingSketch Team</p>
       <p>Email: amtlhm518@gmail.com</p>
     </div>
 
@@ -307,8 +309,9 @@
       <h2>11. 政策变更</h2>
       <p>隐私政策如有变更，将在本页面上公告。</p>
 
-      <h2>12. 运营者及联系方式</h2>
+      <h2>12. 运营者及个人信息保护责任人</h2>
       <p>运营者：SingsingSketch</p>
+      <p>个人信息保护责任人：SingsingSketch 运营团队</p>
       <p>邮箱：amtlhm518@gmail.com</p>
     </div>
 
@@ -385,8 +388,9 @@
       <h2>11. ポリシーの変更</h2>
       <p>プライバシーポリシーに変更がある場合は、このページでお知らせします。</p>
 
-      <h2>12. 運営者およびお問い合わせ</h2>
+      <h2>12. 運営者および個人情報保護責任者</h2>
       <p>運営者：SingsingSketch</p>
+      <p>個人情報保護責任者：SingsingSketch 運営チーム</p>
       <p>メール：amtlhm518@gmail.com</p>
     </div>
 
@@ -476,13 +480,16 @@
       <h2>11. नीति में बदलाव</h2>
       <p>गोपनीयता नीति में किसी भी बदलाव की सूचना इस पृष्ठ पर दी जाएगी।</p>
 
-      <h2>12. संचालक और संपर्क</h2>
+      <h2>12. संचालक और डेटा सुरक्षा अधिकारी</h2>
       <p>संचालक: SingsingSketch</p>
+      <p>डेटा सुरक्षा अधिकारी: SingsingSketch टीम</p>
       <p>ईमेल: amtlhm518@gmail.com</p>
     </div>
 
     <script>
-      function show(lang) {
+      // 모바일 웹뷰에서 event.target 이 일관성 없게 동작하는 문제 회피
+      // → 호출부에서 this 를 직접 전달
+      function show(lang, btn) {
         document
           .querySelectorAll(".lang-section")
           .forEach((el) => el.classList.remove("active"));
@@ -490,7 +497,7 @@
           .querySelectorAll(".lang-tabs button")
           .forEach((el) => el.classList.remove("active"));
         document.getElementById(lang).classList.add("active");
-        event.target.classList.add("active");
+        btn.classList.add("active");
       }
     </script>
   </body>
